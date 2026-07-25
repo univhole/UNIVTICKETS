@@ -4,32 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNIVHOLE - BLACKPINK [ DEBUT EVENT ] : SEOUL</title>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
-            --bg-dark: #020208;
-            --card-bg: rgba(10, 8, 28, 0.85);
+            --bg-dark: #07070e;
+            --card-bg: rgba(18, 18, 30, 0.85);
             --pink-accent: #ff0055;
             --pink-glow: #ff2a85;
-            --purple-accent: #8a2be2;
-            --cyan-accent: #00f0ff;
+            --purple-accent: #7928ca;
+            --cyan-accent: #00dfa2;
             --text-main: #ffffff;
-            --text-muted: #8e8ea8;
+            --text-muted: #a0a0b8;
+            --border-color: rgba(255, 255, 255, 0.1);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(255, 0, 85, 0.25), transparent 70%),
-                radial-gradient(circle at 100% 100%, rgba(0, 240, 255, 0.15), transparent 50%),
-                radial-gradient(circle at 0% 50%, rgba(138, 43, 226, 0.2), transparent 50%);
+                radial-gradient(circle at 50% 0%, rgba(255, 0, 85, 0.2), transparent 70%),
+                radial-gradient(circle at 100% 100%, rgba(121, 40, 202, 0.15), transparent 50%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -40,11 +39,11 @@
 
         header {
             width: 100%;
-            padding: 20px;
-            background: rgba(2, 2, 8, 0.9);
-            border-bottom: 1px solid rgba(255, 0, 85, 0.4);
+            padding: 18px;
+            background: rgba(7, 7, 14, 0.95);
+            border-bottom: 1px solid rgba(255, 0, 85, 0.3);
             text-align: center;
-            box-shadow: 0 4px 25px rgba(255, 0, 85, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
@@ -52,116 +51,150 @@
         }
 
         header h1 {
-            font-size: 2.2rem;
-            letter-spacing: 10px;
-            color: var(--text-main);
-            text-shadow: 0 0 12px var(--pink-glow), 0 0 24px var(--pink-accent);
+            font-size: 2rem;
+            letter-spacing: 12px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--pink-glow);
             font-weight: 900;
         }
 
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 750px;
             padding: 20px;
             margin-top: 10px;
         }
 
         .card {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            padding: 28px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
             backdrop-filter: blur(20px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             margin-bottom: 20px;
+        }
+
+        .event-banner {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .event-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .event-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
         }
 
         .btn {
             background: linear-gradient(135deg, var(--pink-accent), var(--purple-accent));
             color: white;
             border: none;
-            padding: 16px 28px;
+            padding: 16px;
             font-size: 1rem;
             font-weight: 700;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
             width: 100%;
-            margin-top: 20px;
-            text-transform: uppercase;
             letter-spacing: 2px;
         }
 
         .btn:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 0 35px rgba(255, 0, 85, 0.8);
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.6);
         }
 
         .btn:disabled {
-            background: #1f1f33;
-            box-shadow: none;
+            background: #222233;
+            color: #555566;
             cursor: not-allowed;
-            color: #555577;
+            box-shadow: none;
         }
 
-        .event-info-header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+        /* THAITICKET QUEUE SYSTEM */
+        .queue-box {
             text-align: center;
+            padding: 20px 10px;
         }
 
-        .event-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        .queue-number-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
         }
 
-        /* QUEUE SPINNER */
-        .spinner {
-            width: 65px;
-            height: 65px;
-            border: 5px solid rgba(255, 255, 255, 0.05);
-            border-top: 5px solid var(--cyan-accent);
-            border-right: 5px solid var(--pink-accent);
-            border-radius: 50%;
-            animation: spin 1s infinite linear;
-            margin: 30px auto;
+        .queue-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--pink-glow);
+            text-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
+            font-family: monospace;
         }
 
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .progress-container {
+            width: 100%;
+            height: 14px;
+            background: #111122;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 25px 0 10px 0;
+        }
 
-        /* SEATING STAGE */
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--purple-accent), var(--pink-accent), var(--cyan-accent));
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        /* SEATING LAYOUT */
         .stage {
-            width: 85%;
-            margin: 0 auto 35px auto;
+            width: 100%;
             padding: 12px;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.03);
             border: 2px solid var(--cyan-accent);
             text-align: center;
             font-weight: bold;
-            letter-spacing: 12px;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
-            border-radius: 10px;
+            letter-spacing: 10px;
+            box-shadow: 0 0 15px rgba(0, 223, 162, 0.2);
+            border-radius: 8px;
             color: var(--cyan-accent);
+            margin-bottom: 25px;
         }
 
         .zone-card {
-            width: 100%;
-            padding: 18px 22px;
-            border-radius: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.08);
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: rgba(255, 255, 255, 0.02);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .zone-card:hover:not(.sold-out) {
@@ -172,59 +205,49 @@
         .zone-card.selected {
             border-color: var(--pink-accent);
             background: rgba(255, 0, 85, 0.12);
-            box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
         }
 
         .zone-card.sold-out {
             opacity: 0.3;
             cursor: not-allowed;
-            background: #0f0f1d;
-            border-color: #222238;
+            background: #0d0d18;
         }
 
-        /* CURVED SECTOR LAYOUT */
-        .zone-blink { border-top: 4px solid var(--pink-accent); border-radius: 50px 50px 16px 16px; }
-        .zone-love { border-top: 4px solid var(--purple-accent); border-radius: 35px 35px 16px 16px; }
-        .zone-blackpink { border-top: 4px solid var(--cyan-accent); border-radius: 20px 20px 16px 16px; }
-
         .input-group {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .input-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: var(--text-muted);
             font-size: 0.85rem;
             letter-spacing: 1px;
-            font-weight: 600;
         }
 
         .input-group input {
             width: 100%;
-            padding: 14px 16px;
-            border-radius: 10px;
+            padding: 14px;
+            border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             color: white;
             font-size: 1rem;
-            transition: 0.3s;
         }
 
         .input-group input:focus {
             outline: none;
-            border-color: var(--cyan-accent);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            border-color: var(--pink-accent);
         }
 
         .hidden { display: none !important; }
 
         .badge {
             background: rgba(255, 255, 255, 0.08);
-            padding: 6px 14px;
-            border-radius: 20px;
+            padding: 5px 12px;
+            border-radius: 15px;
             font-size: 0.85rem;
-            border: 1px solid rgba(255,255,255,0.1);
         }
     </style>
 </head>
@@ -238,92 +261,100 @@
 
         <!-- STEP 1: EVENT INFO -->
         <div id="step-event" class="card">
-            <div class="event-info-header">
+            <div class="event-banner">
                 <div class="event-title">BLACKPINK [ DEBUT EVENT ] : SEOUL</div>
-                <p style="color: var(--cyan-accent); font-weight: bold; letter-spacing: 2px; font-size: 0.9rem;">INTERSTELLAR EVENT PASS</p>
+                <p style="color: var(--pink-glow); font-weight: 600; font-size: 0.9rem;">OFFICIAL TICKETING PORTAL</p>
             </div>
-            <div style="line-height: 2; color: var(--text-muted); font-size: 0.95rem;">
-                <p>📍 <strong>Location:</strong> Cosmic Arena, Seoul</p>
-                <p>📅 <strong>Date:</strong> 08.08.2026 20:00 GMT+7</p>
-                <p>🎫 <strong>Ticket Price:</strong> $0.00 (FREE ADMISSION)</p>
-                <p style="margin-top: 15px;">Welcome to UNIVHOLE. Prepare to enter the portal and secure your space pass for BLACKPINK's debut event in Seoul.</p>
+
+            <div class="event-info-grid">
+                <div>📍 <strong>Venue:</strong> Cosmic Arena</div>
+                <div>📅 <strong>Date:</strong> 08.08.2026</div>
+                <div>⏰ <strong>Time:</strong> 20:00 GMT+7</div>
+                <div>🎫 <strong>Price:</strong> Free Admission</div>
             </div>
-            <button class="btn" onclick="startQueue()">ENTER QUEUE</button>
+
+            <button class="btn" onclick="startQueue()">JOIN QUEUE & BUY TICKET</button>
         </div>
 
-        <!-- STEP 2: QUEUE ROOM -->
-        <div id="step-queue" class="card hidden" style="text-align: center; padding: 40px 20px;">
-            <h2 style="letter-spacing: 3px;">INTERSTELLAR QUEUE</h2>
-            <p style="color: var(--text-muted); margin-top: 10px; font-size: 0.9rem;">Establishing portal connection. Please do not close this page...</p>
-            <div class="spinner"></div>
-            <p style="font-size: 1.1rem;">Wait Time: <span id="timer" style="color: var(--pink-glow); font-weight: bold;">20</span> seconds</p>
+        <!-- STEP 2: THAITICKET STYLE QUEUE ROOM -->
+        <div id="step-queue" class="card hidden queue-box">
+            <h2 style="letter-spacing: 2px;">WAITING ROOM</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">คุณกำลังอยู่ในคิวรอซื้อบัตร กรุณาอย่ารีเฟรชหน้าจอ</p>
+
+            <div class="queue-number-card">
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;">จำนวนคิวด้านหน้าคุณ (QUEUES AHEAD OF YOU)</div>
+                <div class="queue-number" id="queue-count">1,248</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted);">
+                <span>สถานะคิว: กำลังจัดคิว...</span>
+                <span id="percent-text">0%</span>
+            </div>
         </div>
 
         <!-- STEP 3: SEATING & FORM -->
         <div id="step-booking" class="card hidden">
-            <h2 style="margin-bottom: 5px;">SELECT YOUR SECTOR</h2>
-            <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem;">Choose an available arena zone below:</p>
+            <h2 style="margin-bottom: 5px;">SELECT SEATING ZONE</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem;">เลือกรอบ/โซนที่ต้องการจอง:</p>
 
             <div class="stage">STAGE</div>
 
             <div id="seating">
-                <div class="zone-card zone-blink" id="card-BLINK" onclick="selectZone('BLINK')">
+                <div class="zone-card" id="card-BLINK" onclick="selectZone('BLINK')">
                     <div>
-                        <strong style="color: var(--pink-glow);">ZONE: BLINK</strong>
-                        <div style="font-size: 0.8rem; color: var(--text-muted);">Front VIP Orbit</div>
+                        <strong style="color: var(--pink-glow);">ZONE: BLINK (VIP)</strong>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Standing Zone Near Stage</div>
                     </div>
-                    <div>
-                        <span class="badge" id="stock-BLINK">Seats Left: 10</span>
-                    </div>
+                    <span class="badge" id="stock-BLINK">เหลือ 10 ที่</span>
                 </div>
 
-                <div class="zone-card zone-love" id="card-LOVE" onclick="selectZone('LOVE')">
+                <div class="zone-card" id="card-LOVE" onclick="selectZone('LOVE')">
                     <div>
                         <strong style="color: var(--purple-accent);">ZONE: LOVE</strong>
-                        <div style="font-size: 0.8rem; color: var(--text-muted);">Mid-Tier Sector</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Lower Tier Seating</div>
                     </div>
-                    <div>
-                        <span class="badge" id="stock-LOVE">Seats Left: 10</span>
-                    </div>
+                    <span class="badge" id="stock-LOVE">เหลือ 10 ที่</span>
                 </div>
 
-                <div class="zone-card zone-blackpink" id="card-BLACKPINK" onclick="selectZone('BLACKPINK')">
+                <div class="zone-card" id="card-BLACKPINK" onclick="selectZone('BLACKPINK')">
                     <div>
                         <strong style="color: var(--cyan-accent);">ZONE: BLACKPINK</strong>
-                        <div style="font-size: 0.8rem; color: var(--text-muted);">Atmospheric Upper Deck</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Upper Deck Seating</div>
                     </div>
-                    <div>
-                        <span class="badge" id="stock-BLACKPINK">Seats Left: 10</span>
-                    </div>
+                    <span class="badge" id="stock-BLACKPINK">เหลือ 10 ที่</span>
                 </div>
             </div>
 
-            <form id="booking-form" style="margin-top: 30px;" onsubmit="processBooking(event)">
+            <form id="booking-form" style="margin-top: 25px;" onsubmit="processBooking(event)">
                 <div class="input-group">
                     <label>ROBLOX USERNAME</label>
-                    <input type="text" id="roblox" required placeholder="Enter Roblox username">
+                    <input type="text" id="roblox" required placeholder="กรอกชื่อ Roblox">
                 </div>
                 <div class="input-group">
                     <label>DISCORD USERNAME</label>
-                    <input type="text" id="discord" required placeholder="e.g. username#0000">
+                    <input type="text" id="discord" required placeholder="เช่น username#0000">
                 </div>
                 <div class="input-group">
                     <label>EMAIL ADDRESS</label>
-                    <input type="email" id="email" required placeholder="To receive ticket confirmation">
+                    <input type="email" id="email" required placeholder="สำหรับรับบัตรคิว">
                 </div>
-                <button type="submit" class="btn" id="submit-btn" disabled>SELECT A ZONE FIRST</button>
+                <button type="submit" class="btn" id="submit-btn" disabled style="margin-top: 15px;">กรุณาเลือกโซนก่อน</button>
             </form>
         </div>
 
         <!-- STEP 4: SUCCESS -->
-        <div id="step-success" class="card hidden" style="text-align: center; padding: 40px 25px;">
-            <div style="font-size: 3.5rem; margin-bottom: 10px;">✨</div>
-            <h2 style="color: var(--cyan-accent); letter-spacing: 2px;">TICKET ISSUED!</h2>
-            <p style="margin: 15px 0; color: var(--text-muted); font-size: 0.95rem;">Your space pass for <strong>08.08.2026 20:00 GMT+7</strong> is confirmed.</p>
-            <div style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 25px;">
-                <p style="font-size: 0.9rem;">Confirmation Sent To: <strong id="confirm-email" style="color: var(--pink-glow);"></strong></p>
+        <div id="step-success" class="card hidden" style="text-align: center; padding: 40px 20px;">
+            <div style="font-size: 3.5rem; margin-bottom: 10px;">🎟️</div>
+            <h2 style="color: var(--cyan-accent);">BOOKING CONFIRMED!</h2>
+            <p style="margin: 15px 0; color: var(--text-muted); font-size: 0.95rem;">ทำรายการสำเร็จ! บัตรคอนเสิร์ตวันที่ <strong>08.08.2026 20:00 GMT+7</strong> ถูกยืนยันแล้ว</p>
+            <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); margin-bottom: 20px;">
+                <p style="font-size: 0.9rem;">ระบบได้ส่งอีเมลยืนยันไปที่: <strong id="confirm-email" style="color: var(--pink-glow);"></strong></p>
             </div>
-            <button class="btn" onclick="location.reload()">RESERVE ANOTHER TICKET</button>
+            <button class="btn" onclick="location.reload()">ทำรายการใหม่อีกครั้ง</button>
         </div>
 
     </div>
@@ -336,16 +367,29 @@
             document.getElementById('step-event').classList.add('hidden');
             document.getElementById('step-queue').classList.remove('hidden');
             
-            let timeLeft = 20;
-            const timer = setInterval(() => {
-                timeLeft--;
-                document.getElementById('timer').innerText = timeLeft;
-                if(timeLeft <= 0) {
-                    clearInterval(timer);
+            let queueAhead = 1248;
+            let totalSteps = 20;
+            let currentStep = 0;
+
+            const interval = setInterval(() => {
+                currentStep++;
+                
+                // สุ่มลดจำนวนคิวลงเหมือนจองจริง
+                queueAhead -= Math.floor(Math.random() * 50) + 40;
+                if(queueAhead < 0) queueAhead = 0;
+                
+                let percent = Math.floor((currentStep / totalSteps) * 100);
+                
+                document.getElementById('queue-count').innerText = queueAhead.toLocaleString();
+                document.getElementById('progress-bar').style.width = percent + '%';
+                document.getElementById('percent-text').innerText = percent + '%';
+
+                if(currentStep >= totalSteps) {
+                    clearInterval(interval);
                     document.getElementById('step-queue').classList.add('hidden');
                     document.getElementById('step-booking').classList.remove('hidden');
                 }
-            }, 1000);
+            }, 800);
         }
 
         function selectZone(zone) {
@@ -356,7 +400,7 @@
             
             const btn = document.getElementById('submit-btn');
             btn.disabled = false;
-            btn.innerText = `CONFIRM PASS - ${zone} ZONE`;
+            btn.innerText = `ยืนยันการจอง - โซน ${zone}`;
         }
 
         function processBooking(e) {
@@ -366,7 +410,7 @@
             const email = document.getElementById('email').value;
             
             currentStock[selectedZone]--;
-            document.getElementById(`stock-${selectedZone}`).innerText = `Seats Left: ${currentStock[selectedZone]}`;
+            document.getElementById(`stock-${selectedZone}`).innerText = `เหลือ ${currentStock[selectedZone]} ที่`;
             
             if(currentStock[selectedZone] === 0) {
                 const card = document.getElementById(`card-${selectedZone}`);
