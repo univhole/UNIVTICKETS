@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIVTICKERMAJOR - BLACKPINK [ DEBUT EVENT ]</title>
+    <title>UNIVTICKETS - BLACKPINK [FREE CONCERT]</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,540 +16,260 @@
                         cardbg: '#1f2833',
                         neon: {
                             pink: '#ff2a85',
-                            purple: '#b537f2',
-                            cyan: '#66fcf1',
-                        }
-                    },
-                    animation: {
-                        'spin-slow': 'spin 20s linear infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-8px)' },
+                            purple: '#b82a85',
+                            cyan: '#66fcf1'
                         }
                     }
                 }
             }
         }
     </script>
-    <!-- FontAwesome & Google Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Rajdhani', sans-serif;
-            background-color: #0b0c10;
-            color: #c5c6c7;
-            overflow-x: hidden;
-        }
-        h1, h2, h3, .font-orbitron {
-            font-family: 'Orbitron', sans-serif;
-        }
-        .glow-pink {
-            box-shadow: 0 0 20px rgba(255, 42, 133, 0.3);
-        }
-        .glow-cyan {
-            box-shadow: 0 0 20px rgba(102, 252, 241, 0.3);
-        }
-        .glass-panel {
-            background: rgba(31, 40, 51, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(102, 252, 241, 0.15);
-        }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-neon-pink selection:text-white">
-
-    <!-- Header / Navbar -->
-    <header class="glass-panel sticky top-0 z-50 border-b border-gray-800 px-6 py-4 flex items-center justify-between">
-        <div class="flex items-center space-x-3 cursor-pointer" onclick="goToHome()">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-neon-pink to-neon-purple flex items-center justify-center glow-pink">
-                <i class="fa-solid fa-ticket text-white text-lg"></i>
-            </div>
-            <div>
-                <span class="text-xl font-orbitron font-black tracking-widest text-white">UNIVTICKERMAJOR</span>
-                <span class="block text-[10px] tracking-widest text-neon-cyan font-semibold uppercase">Official Ticketing Gateway</span>
+<body class="bg-darkbg text-gray-100 min-h-screen font-sans selection:bg-neon-pink selection:text-white">
+    
+    <!-- Navbar -->
+    <nav class="border-b border-gray-800 bg-darkbg/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl font-black text-neon-pink tracking-wider">UNIV<span class="text-white">TICKETS</span></span>
+                    <span class="bg-neon-pink/20 text-neon-pink text-xs px-2.5 py-1 rounded-full font-bold border border-neon-pink/30">100% FREE</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="switchTab('home')" class="text-sm font-medium hover:text-neon-pink transition">หน้าแรก</button>
+                    <button onclick="switchTab('my-tickets')" class="text-sm font-medium hover:text-neon-pink transition flex items-center gap-1">
+                        <i class="fa-solid fa-ticket"></i> ตั๋วของฉัน (<span id="ticketCount">0</span>)
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="flex items-center space-x-4">
-            <button onclick="openStatusModal()" class="text-xs font-orbitron px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition text-white border border-gray-700">
-                <i class="fa-solid fa-ticket mr-1"></i> MY TICKETS
-            </button>
-        </div>
-    </header>
+    </nav>
 
     <!-- Main Container -->
-    <main class="flex-grow container mx-auto px-4 py-8 max-w-5xl">
-
-        <!-- VIEW 1: CONCERT LISTING -->
-        <div id="view-home" class="space-y-6">
-            <div class="text-center space-y-3 py-6">
-                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-wider font-orbitron text-white">
-                    SELECT CONCERT EVENT
-                </h1>
-                <p class="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
-                    Choose your event and secure your seat for the live concert experience.
-                </p>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Home Tab -->
+        <div id="tab-home" class="space-y-8">
+            <!-- Hero Banner -->
+            <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-purple-900/40 via-pink-900/40 to-black border border-neon-pink/30 p-8 md:p-12 shadow-2xl shadow-neon-pink/10">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="bg-neon-pink text-white text-xs font-bold uppercase px-3 py-1 rounded-full">Special Free Event</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold mt-4 tracking-tight text-white">BLACKPINK <span class="text-neon-pink">WORLD TOUR</span> [FREE]</h1>
+                    <p class="text-gray-300 mt-4 text-lg">คอนเสิร์ตสุดพิเศษ เปิดให้เข้าชมฟรีทุกที่นั่ง! ไม่มีค่าใช้จ่ายใดๆ ทั้งสิ้น รีบจับจองที่นั่งของคุณก่อนสิทธิ์จะหมด</p>
+                    <div class="mt-6 flex flex-wrap gap-4 text-sm text-gray-300">
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-calendar text-neon-pink"><span> วันที่ 31 ธันวาคม 2569</span></i></div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-neon-pink"><span> ราชมังคลากีฬาสถาน</span></i></div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Concert Card (No Image as requested, clean layout) -->
-            <div class="glass-panel rounded-2xl p-6 md:p-8 max-w-3xl mx-auto border border-gray-700 hover:border-neon-pink transition duration-300 shadow-xl relative overflow-hidden group">
-                <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
-                    <div class="space-y-3 text-center md:text-left">
-                        <div class="inline-flex items-center space-x-2 bg-neon-pink/20 text-neon-pink px-3 py-1 rounded-full text-xs font-bold border border-neon-pink/30">
-                            <i class="fa-solid fa-star text-[10px]"></i>
-                            <span>LIVE EVENT</span>
+            <!-- Seating & Zones (All Free!) -->
+            <div>
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-chair text-neon-pink"></i> เลือกโซนที่นั่ง (ฟรีทุกโซน)
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Zone VIP -->
+                    <div class="bg-cardbg rounded-2xl border border-gray-800 hover:border-neon-pink transition p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-xl font-bold text-white">VIP ZONE (บัตรยืนติดขอบเวที)</h3>
+                                <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2.5 py-1 rounded-full">ฟรี</span>
+                            </div>
+                            <p class="text-gray-400 text-sm mt-2">ใกล้ชิดศิลปินแบบสุดๆ สิทธิพิเศษเข้าฮอลล์ก่อนใคร</p>
+                            <div class="mt-4 text-2xl font-black text-neon-pink">0 THB <span class="text-xs text-gray-500 line-through">6,500 THB</span></div>
                         </div>
-                        <h2 class="text-2xl sm:text-3xl font-black font-orbitron text-white">
-                            BLACKPINK <span class="text-neon-pink">[ DEBUT EVENT ]</span> : SEOUL
-                        </h2>
-                        <div class="space-y-1.5 text-sm text-gray-300">
-                            <div class="flex items-center justify-center md:justify-start space-x-2">
-                                <i class="fa-solid fa-calendar-days text-neon-cyan w-5"></i>
-                                <span>August 08, 2026 | 19:00 KST</span>
-                            </div>
-                            <div class="flex items-center justify-center md:justify-start space-x-2">
-                                <i class="fa-solid fa-location-dot text-neon-pink w-5"></i>
-                                <span>UNIVHALL</span>
-                            </div>
-                            <div class="flex items-center justify-center md:justify-start space-x-2">
-                                <i class="fa-solid fa-ticket-simple text-yellow-400 w-5"></i>
-                                <span>Zones: BLINK, LOVE, BLACKPINK</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-center space-y-3 min-w-[200px]">
-                        <button onclick="startQueue()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-neon-pink to-neon-purple text-white font-orbitron font-bold tracking-wider hover:opacity-90 shadow-lg glow-pink transition duration-200">
-                            GET TICKETS <i class="fa-solid fa-arrow-right ml-2"></i>
+                        <button onclick="openBookingModal('VIP Zone', 0)" class="mt-6 w-full bg-neon-pink hover:bg-neon-pink/80 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-neon-pink/30">
+                            จองฟรีทันที
                         </button>
-                        <span class="text-xs text-gray-400 font-mono">Status: <span class="text-green-400 font-bold">AVAILABLE</span></span>
+                    </div>
+
+                    <!-- Zone A -->
+                    <div class="bg-cardbg rounded-2xl border border-gray-800 hover:border-neon-pink transition p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-xl font-bold text-white">ZONE A (นั่งฝั่งซ้าย/ขวา)</h3>
+                                <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2.5 py-1 rounded-full">ฟรี</span>
+                            </div>
+                            <p class="text-gray-400 text-sm mt-2">มองเห็นเวทีชัดเจน นั่งสบายตลอดการแสดง</p>
+                            <div class="mt-4 text-2xl font-black text-neon-pink">0 THB <span class="text-xs text-gray-500 line-through">4,500 THB</span></div>
+                        </div>
+                        <button onclick="openBookingModal('Zone A', 0)" class="mt-6 w-full bg-neon-pink hover:bg-neon-pink/80 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-neon-pink/30">
+                            จองฟรีทันที
+                        </button>
+                    </div>
+
+                    <!-- Zone B -->
+                    <div class="bg-cardbg rounded-2xl border border-gray-800 hover:border-neon-pink transition p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-xl font-bold text-white">ZONE B (บัตรดอยทั่วไป)</h3>
+                                <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2.5 py-1 rounded-full">ฟรี</span>
+                            </div>
+                            <p class="text-gray-400 text-sm mt-2">บรรยากาศสุดฟิน ร่วมสนุกได้เต็มที่กับคนรักเสียงเพลง</p>
+                            <div class="mt-4 text-2xl font-black text-neon-pink">0 THB <span class="text-xs text-gray-500 line-through">2,500 THB</span></div>
+                        </div>
+                        <button onclick="openBookingModal('Zone B', 0)" class="mt-6 w-full bg-neon-pink hover:bg-neon-pink/80 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-neon-pink/30">
+                            จองฟรีทันที
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- VIEW 2: WAITING ROOM / QUEUE (20 Seconds Smooth Loader) -->
-        <div id="view-queue" class="hidden flex flex-col items-center justify-center py-20 space-y-8 max-w-md mx-auto text-center">
-            <div class="relative w-28 h-28 flex items-center justify-center">
-                <div class="absolute inset-0 rounded-full border-4 border-gray-800 border-t-neon-pink animate-spin-slow"></div>
-                <i class="fa-solid fa-hourglass-half text-2xl text-neon-cyan animate-pulse"></i>
+        <!-- My Tickets Tab -->
+        <div id="tab-my-tickets" class="hidden space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-2">
+                <i class="fa-solid fa-ticket text-neon-pink"></i> ตั๋วคอนเสิร์ตทั้งหมดของคุณ
+            </h2>
+            <div id="ticketList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Dynamic injected tickets -->
             </div>
-            <div class="space-y-2">
-                <h2 class="text-xl sm:text-2xl font-bold font-orbitron text-white">WAITING ROOM IN PROGRESS</h2>
-                <p class="text-gray-400 text-xs sm:text-sm">Please hold on while we secure your queue position...</p>
-            </div>
-            <div class="glass-panel w-full p-6 rounded-2xl space-y-4 border border-gray-700">
-                <div class="flex justify-between items-center text-sm font-mono">
-                    <span class="text-gray-400">QUEUE POSITION:</span>
-                    <span id="queue-pos" class="text-neon-cyan font-bold text-lg">42</span>
-                </div>
-                <div class="w-full bg-gray-900 rounded-full h-3 overflow-hidden border border-gray-800">
-                    <div id="queue-progress" class="bg-gradient-to-r from-neon-pink to-neon-cyan h-full rounded-full transition-all duration-300" style="width: 0%;"></div>
-                </div>
-                <div class="flex justify-between items-center text-xs font-mono text-gray-400">
-                    <span>Estimated Time:</span>
-                    <span id="queue-time" class="text-white font-bold">20 seconds</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- VIEW 3: SEATING MAP / ZONE SELECTION -->
-        <div id="view-seating" class="hidden space-y-6">
-            <div class="flex flex-col sm:flex-row justify-between items-center glass-panel p-4 rounded-xl border border-gray-700 gap-4">
-                <div>
-                    <h2 class="text-base font-orbitron font-bold text-white flex items-center space-x-2">
-                        <i class="fa-solid fa-map text-neon-pink"></i>
-                        <span>SELECT SEATING ZONE</span>
-                    </h2>
-                    <p class="text-xs text-gray-400">Venue: UNIVHALL - Rotational Stage Setup</p>
-                </div>
-                <button onclick="goToHome()" class="text-xs text-gray-400 hover:text-white px-3 py-1.5 rounded-lg border border-gray-700 transition">
-                    <i class="fa-solid fa-arrow-left mr-1"></i> Back
-                </button>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Seating Map with 3 Rotational Zones and Central Stage -->
-                <div class="lg:col-span-2 glass-panel p-6 rounded-2xl flex flex-col items-center justify-center min-h-[400px] relative border border-gray-700">
-                    <!-- Central Stage -->
-                    <div class="w-1/2 py-2.5 bg-gradient-to-r from-purple-800 via-neon-pink to-purple-800 rounded-lg shadow-lg text-center font-orbitron font-bold text-xs tracking-widest text-white mb-6 border border-white/20">
-                        <i class="fa-solid fa-microphone mr-2"></i> CENTRAL STAGE
-                    </div>
-
-                    <!-- 3 Zones: BLINK (0 THB Free), LOVE, BLACKPINK -->
-                    <div class="w-full max-w-md grid grid-cols-1 gap-3.5">
-                        <!-- Zone 1: BLINK -->
-                        <div onclick="selectZone('BLINK', 0, 10)" class="cursor-pointer group glass-panel p-4 rounded-xl border-2 border-neon-pink hover:bg-gray-800 transition flex items-center justify-between">
-                            <div>
-                                <span class="text-[10px] font-bold text-neon-pink uppercase tracking-wider block">Zone 1</span>
-                                <h3 class="text-white font-orbitron font-bold text-sm group-hover:text-neon-pink transition">BLINK ZONE</h3>
-                                <p class="text-[11px] text-gray-400">Special Free Admission</p>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-base font-bold font-orbitron text-green-400">0 THB (FREE)</div>
-                                <div class="text-xs font-mono text-gray-400"><span id="stock-blink" class="font-bold text-white">10</span> / 10 Left</div>
-                            </div>
-                        </div>
-
-                        <!-- Zone 2: LOVE -->
-                        <div onclick="selectZone('LOVE', 1500, 10)" class="cursor-pointer group glass-panel p-4 rounded-xl border-2 border-neon-purple hover:bg-gray-800 transition flex items-center justify-between">
-                            <div>
-                                <span class="text-[10px] font-bold text-neon-purple uppercase tracking-wider block">Zone 2</span>
-                                <h3 class="text-white font-orbitron font-bold text-sm group-hover:text-neon-purple transition">LOVE ZONE</h3>
-                                <p class="text-[11px] text-gray-400">Rotational Ring View</p>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-base font-bold font-orbitron text-neon-cyan">1,500 THB</div>
-                                <div class="text-xs font-mono text-gray-400"><span id="stock-love" class="font-bold text-white">10</span> / 10 Left</div>
-                            </div>
-                        </div>
-
-                        <!-- Zone 3: BLACKPINK -->
-                        <div onclick="selectZone('BLACKPINK', 2500, 10)" class="cursor-pointer group glass-panel p-4 rounded-xl border-2 border-neon-cyan hover:bg-gray-800 transition flex items-center justify-between">
-                            <div>
-                                <span class="text-[10px] font-bold text-neon-cyan uppercase tracking-wider block">Zone 3</span>
-                                <h3 class="text-white font-orbitron font-bold text-sm group-hover:text-neon-cyan transition">BLACKPINK ZONE</h3>
-                                <p class="text-[11px] text-gray-400">VIP Ultimate Deck</p>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-base font-bold font-orbitron text-neon-cyan">2,500 THB</div>
-                                <div class="text-xs font-mono text-gray-400"><span id="stock-blackpink" class="font-bold text-white">10</span> / 10 Left</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Summary Panel -->
-                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between border border-gray-700">
-                    <div class="space-y-4">
-                        <h3 class="font-orbitron font-bold text-white text-sm border-b border-gray-800 pb-3">
-                            <i class="fa-solid fa-circle-info text-neon-cyan mr-1"></i> SUMMARY
-                        </h3>
-                        <div class="space-y-2.5 text-sm">
-                            <div class="flex justify-between">
-                                <span class="text-gray-400">Selected Zone:</span>
-                                <span id="summary-zone" class="text-neon-pink font-bold font-orbitron">None</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-400">Price:</span>
-                                <span id="summary-price" class="text-white font-mono font-bold">0 THB</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-400">Limit:</span>
-                                <span class="text-white font-mono font-bold">Max 10 Tickets</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button id="btn-proceed-form" onclick="goToForm()" disabled class="w-full mt-6 py-3 rounded-xl bg-gray-800 text-gray-500 font-orbitron font-bold text-xs cursor-not-allowed transition">
-                        PROCEED TO CHECKOUT <i class="fa-solid fa-arrow-right ml-1"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- VIEW 4: CHECKOUT FORM (Roblox Username, Discord, Email) -->
-        <div id="view-form" class="hidden max-w-xl mx-auto glass-panel p-6 sm:p-8 rounded-2xl border border-gray-700 space-y-6">
-            <div class="flex items-center justify-between border-b border-gray-800 pb-4">
-                <div>
-                    <h2 class="text-lg font-bold font-orbitron text-white">ATTENDEE INFORMATION</h2>
-                    <p class="text-xs text-gray-400">Please fill in your credentials to generate your ticket.</p>
-                </div>
-                <button onclick="goToSeating()" class="text-xs text-gray-400 hover:text-white px-3 py-1.5 rounded-lg border border-gray-700">
-                    <i class="fa-solid fa-arrow-left mr-1"></i> Back
-                </button>
-            </div>
-
-            <form id="ticket-form" onsubmit="submitBooking(event)" class="space-y-4">
-                <div class="space-y-1.5">
-                    <label class="block text-xs font-orbitron text-gray-300 uppercase">
-                        <i class="fa-solid fa-gamepad text-neon-pink mr-1"></i> Roblox Username <span class="text-neon-pink">*</span>
-                    </label>
-                    <input type="text" id="input-roblox" required placeholder="e.g. StarLord_Roblox99" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-neon-pink transition text-sm font-mono">
-                </div>
-
-                <div class="space-y-1.5">
-                    <label class="block text-xs font-orbitron text-gray-300 uppercase">
-                        <i class="fa-brands fa-discord text-neon-cyan mr-1"></i> Discord Handle <span class="text-neon-cyan">*</span>
-                    </label>
-                    <input type="text" id="input-discord" required placeholder="e.g. starlord#0001" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-neon-cyan transition text-sm font-mono">
-                </div>
-
-                <div class="space-y-1.5">
-                    <label class="block text-xs font-orbitron text-gray-300 uppercase">
-                        <i class="fa-solid fa-envelope text-yellow-400 mr-1"></i> Email (Triggers Email Notification) <span class="text-yellow-400">*</span>
-                    </label>
-                    <input type="email" id="input-email" required placeholder="e.g. yourname@domain.com" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-yellow-400 transition text-sm font-mono">
-                    <span class="text-[10px] text-gray-400">An email confirmation notice will be dispatched instantly.</span>
-                </div>
-
-                <div class="space-y-1.5">
-                    <label class="block text-xs font-orbitron text-gray-300 uppercase">
-                        <i class="fa-solid fa-ticket text-neon-purple mr-1"></i> Quantity (Max 10)
-                    </label>
-                    <select id="input-qty" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-neon-purple transition text-sm font-mono">
-                        <option value="1">1 Ticket</option>
-                        <option value="2">2 Tickets</option>
-                        <option value="3">3 Tickets</option>
-                        <option value="4">4 Tickets</option>
-                        <option value="5">5 Tickets</option>
-                        <option value="6">6 Tickets</option>
-                        <option value="7">7 Tickets</option>
-                        <option value="8">8 Tickets</option>
-                        <option value="9">9 Tickets</option>
-                        <option value="10">10 Tickets (Max Limit)</option>
-                    </select>
-                </div>
-
-                <div class="pt-2">
-                    <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-neon-pink to-neon-purple text-white font-orbitron font-bold text-xs tracking-wider hover:opacity-90 shadow-lg glow-pink transition">
-                        CONFIRM & ISSUE TICKET <i class="fa-solid fa-check ml-1"></i>
-                    </button>
-                </div>
-            </form>
         </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="glass-panel border-t border-gray-800 py-4 text-center text-xs text-gray-500">
-        <p class="font-orbitron tracking-widest text-gray-400">UNIVTICKERMAJOR TICKETING SYSTEMS</p>
-        <p>© 2026 BLACKPINK [ DEBUT EVENT ] : SEOUL. All rights reserved.</p>
-    </footer>
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-cardbg border border-gray-800 rounded-3xl max-w-md w-full p-6 space-y-6 shadow-2xl relative">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-bold text-white">ยืนยันการจองตั๋วฟรี</h3>
+                <button onclick="closeBookingModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="bg-darkbg/50 p-4 rounded-xl border border-gray-800 space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400">โซนที่เลือก:</span>
+                        <span id="modalZone" class="font-bold text-white">VIP Zone</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400">ราคา:</span>
+                        <span class="font-bold text-emerald-400">FREE (0 THB)</span>
+                    </div>
+                </div>
 
-    <!-- MODAL: SUCCESS TICKET VIEW (Realistic Ticket Card) -->
-    <div id="modal-ticket" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden p-4">
-        <div class="glass-panel w-full max-w-md rounded-2xl border border-neon-pink p-6 relative space-y-5 shadow-2xl animate-float">
-            <button onclick="closeTicketModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
+                <div>
+                    <label class="block text-sm text-gray-300 mb-1">ชื่อ-นามสกุล ผู้จอง</label>
+                    <input type="text" id="userName" placeholder="กรอกชื่อของคุณ" class="w-full bg-darkbg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-neon-pink">
+                </div>
+            </div>
+
+            <button onclick="confirmBooking()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-emerald-500/20">
+                ยืนยันการรับตั๋วฟรีทันที!
             </button>
-
-            <div class="text-center space-y-1">
-                <div class="inline-block px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-[11px] font-mono font-bold mb-1">
-                    <i class="fa-solid fa-circle-check mr-1"></i> TICKET ISSUED SUCCESSFULLY
-                </div>
-                <h3 class="text-lg font-bold font-orbitron text-white">OFFICIAL CONCERT TICKET</h3>
-                <p class="text-xs text-gray-400">Email dispatch notification sent successfully!</p>
-            </div>
-
-            <!-- Realistic Ticket Card -->
-            <div class="bg-gray-900 rounded-xl border border-gray-700 p-4 space-y-3 font-mono text-xs">
-                <div class="flex justify-between items-start border-b border-gray-800 pb-2.5">
-                    <div>
-                        <span class="text-[9px] font-orbitron text-neon-pink uppercase tracking-widest block">Venue: UNIVHALL</span>
-                        <h4 class="text-sm font-bold font-orbitron text-white">BLACKPINK [ DEBUT ]</h4>
-                    </div>
-                    <div class="text-right">
-                        <span id="ticket-zone-tag" class="px-2 py-0.5 bg-neon-pink text-white text-[10px] font-orbitron font-bold rounded">ZONE: BLINK</span>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <span class="text-gray-500 block text-[10px]">ROBLOX USERNAME:</span>
-                        <span id="res-roblox" class="text-white font-bold">--</span>
-                    </div>
-                    <div>
-                        <span class="text-gray-500 block text-[10px]">DISCORD HANDLE:</span>
-                        <span id="res-discord" class="text-neon-cyan font-bold">--</span>
-                    </div>
-                    <div>
-                        <span class="text-gray-500 block text-[10px]">EMAIL:</span>
-                        <span id="res-email" class="text-white font-bold truncate block">--</span>
-                    </div>
-                    <div>
-                        <span class="text-gray-500 block text-[10px]">QUANTITY:</span>
-                        <span id="res-qty" class="text-yellow-400 font-bold">1 Ticket</span>
-                    </div>
-                </div>
-
-                <div class="pt-2 border-t border-gray-800 flex items-center justify-between text-[10px] text-gray-400">
-                    <div>
-                        <span>Date: Aug 08, 2026</span><br>
-                        <span>Time: 19:00 KST</span>
-                    </div>
-                    <div class="bg-white/5 p-1.5 rounded text-center">
-                        <i class="fa-solid fa-qrcode text-xl text-neon-cyan"></i>
-                        <span class="block text-[7px]">VERIFIED CODE</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex gap-2">
-                <button onclick="window.print()" class="flex-1 py-2.5 bg-gray-800 hover:bg-gray-700 text-white font-orbitron text-xs rounded-xl font-bold transition">
-                    <i class="fa-solid fa-print mr-1"></i> PRINT
-                </button>
-                <button onclick="goToHome()" class="flex-1 py-2.5 bg-gradient-to-r from-neon-pink to-neon-purple text-white font-orbitron text-xs rounded-xl font-bold transition">
-                    <i class="fa-solid fa-house mr-1"></i> HOME
-                </button>
-            </div>
         </div>
     </div>
 
-    <!-- NOTIFICATION TOAST -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 glass-panel border border-neon-cyan text-white px-4 py-3 rounded-xl shadow-xl transform translate-y-32 opacity-0 transition-all duration-300 flex items-center space-x-3 text-xs">
-        <i class="fa-solid fa-bell text-neon-cyan text-base"></i>
-        <div>
-            <h5 id="toast-title" class="font-orbitron font-bold text-neon-cyan">NOTIFICATION</h5>
-            <p id="toast-msg" class="text-gray-300">Action completed.</p>
-        </div>
+    <!-- Notification / Message Box -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-cardbg border border-neon-pink text-white px-6 py-3 rounded-2xl shadow-2xl hidden z-50 transition-all duration-300">
+        <span id="toastMessage">แจ้งเตือนสำเร็จ</span>
     </div>
 
-    <!-- SCRIPT LOGIC -->
     <script>
-        // Global inventory for 3 Zones (BLINK = 0 THB free, LOVE, BLACKPINK), max 10 each
-        let stocks = {
-            'BLINK': 10,
-            'LOVE': 10,
-            'BLACKPINK': 10
-        };
+        let selectedZone = '';
+        let myTickets = JSON.parse(localStorage.getItem('univ_free_tickets')) || [];
 
-        let currentSelection = {
-            zone: null,
-            price: 0,
-            maxStock: 10
-        };
+        function switchTab(tabName) {
+            document.getElementById('tab-home').classList.add('hidden');
+            document.getElementById('tab-my-tickets').classList.add('hidden');
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            if(tabName === 'my-tickets') {
+                renderTickets();
+            }
+        }
 
-        let userBookings = [];
+        function openBookingModal(zone) {
+            selectedZone = zone;
+            document.getElementById('modalZone').innerText = zone;
+            document.getElementById('bookingModal').classList.remove('hidden');
+            document.getElementById('bookingModal').classList.add('flex');
+        }
 
-        function showToast(title, message) {
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+            document.getElementById('bookingModal').classList.remove('flex');
+        }
+
+        function confirmBooking() {
+            const name = document.getElementById('userName').value.trim();
+            if(!name) {
+                showToast('กรุณากรอกชื่อ-นามสกุลก่อนจอง');
+                return;
+            }
+
+            const newTicket = {
+                id: 'UNI-' + Math.floor(100000 + Math.random() * 900000),
+                zone: selectedZone,
+                name: name,
+                date: new Date().toLocaleDateString('th-TH')
+            };
+
+            myTickets.push(newTicket);
+            localStorage.setItem('univ_free_tickets', JSON.stringify(myTickets));
+            updateTicketCount();
+            closeBookingModal();
+            showToast('จองตั๋วฟรีสำเร็จแล้ว!');
+            switchTab('my-tickets');
+            document.getElementById('userName').value = '';
+        }
+
+        function renderTickets() {
+            const container = document.getElementById('ticketList');
+            if(myTickets.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-gray-500">
+                        <i class="fa-solid fa-ticket-simple text-4xl mb-3"></i>
+                        <p>คุณยังไม่มีตั๋วคอนเสิร์ต เลือกจองฟรีได้ที่หน้าแรกเลย!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = myTickets.map((t, idx) => `
+                <div class="bg-cardbg border border-gray-800 rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between shadow-lg">
+                    <div class="absolute top-0 right-0 bg-neon-pink/20 text-neon-pink text-xs font-bold px-4 py-1.5 rounded-bl-xl border-l border-b border-neon-pink/30">FREE PASS</div>
+                    <div>
+                        <div class="text-xs text-neon-pink font-bold tracking-wider">BLACKPINK WORLD TOUR</div>
+                        <h3 class="text-xl font-extrabold text-white mt-1">${t.zone}</h3>
+                        <div class="mt-4 space-y-1 text-sm text-gray-300">
+                            <p><span class="text-gray-500">ผู้ถือตั๋ว:</span> ${t.name}</p>
+                            <p><span class="text-gray-500">รหัสตั๋ว:</span> <span class="font-mono text-neon-cyan">${t.id}</span></p>
+                            <p><span class="text-gray-500">วันที่จอง:</span> ${t.date}</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-800 flex justify-between items-center">
+                        <span class="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded-md">0 THB (ฟรีตลอดงาน)</span>
+                        <button onclick="cancelTicket(${idx})" class="text-red-400 hover:text-red-300 text-xs"><i class="fa-solid fa-trash"></i> ยกเลิกตั๋ว</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function cancelTicket(index) {
+            myTickets.splice(index, 1);
+            localStorage.setItem('univ_free_tickets', JSON.stringify(myTickets));
+            updateTicketCount();
+            renderTickets();
+            showToast('ยกเลิกตั๋วเรียบร้อยแล้ว');
+        }
+
+        function updateTicketCount() {
+            document.getElementById('ticketCount').innerText = myTickets.length;
+        }
+
+        // Initialize count on load
+        updateTicketCount();
+
+        function showToast(msg) {
             const toast = document.getElementById('toast');
-            document.getElementById('toast-title').innerText = title;
-            document.getElementById('toast-msg').innerText = message;
-            toast.classList.remove('translate-y-32', 'opacity-0');
+            document.getElementById('toastMessage').innerText = msg;
+            toast.classList.remove('hidden');
             setTimeout(() => {
-                toast.classList.add('translate-y-32', 'opacity-0');
-            }, 3500);
-        }
-
-        function goToHome() {
-            hideAllViews();
-            document.getElementById('view-home').classList.remove('hidden');
-        }
-
-        function startQueue() {
-            hideAllViews();
-            document.getElementById('view-queue').classList.remove('hidden');
-
-            let timeLeft = 20;
-            const posEl = document.getElementById('queue-pos');
-            const timeEl = document.getElementById('queue-time');
-            const progressEl = document.getElementById('queue-progress');
-
-            let timer = setInterval(() => {
-                timeLeft--;
-                let randomPos = Math.floor(Math.random() * 15) + 1;
-                posEl.innerText = randomPos;
-                timeEl.innerText = timeLeft + " seconds";
-                let percent = ((20 - timeLeft) / 20) * 100;
-                progressEl.style.width = percent + "%";
-
-                if (timeLeft <= 0) {
-                    clearInterval(timer);
-                    showToast("QUEUE READY", "Access granted to seating matrix!");
-                    goToSeating();
-                }
-            }, 1000);
-        }
-
-        function goToSeating() {
-            hideAllViews();
-            document.getElementById('view-seating').classList.remove('hidden');
-            updateStockDisplay();
-        }
-
-        function updateStockDisplay() {
-            document.getElementById('stock-blink').innerText = stocks['BLINK'];
-            document.getElementById('stock-love').innerText = stocks['LOVE'];
-            document.getElementById('stock-blackpink').innerText = stocks['BLACKPINK'];
-        }
-
-        function selectZone(zoneName, price) {
-            currentSelection.zone = zoneName;
-            currentSelection.price = price;
-            currentSelection.maxStock = stocks[zoneName];
-
-            document.getElementById('summary-zone').innerText = zoneName + " ZONE";
-            document.getElementById('summary-price').innerText = price === 0 ? 'FREE (0 THB)' : price.toLocaleString() + ' THB';
-
-            const proceedBtn = document.getElementById('btn-proceed-form');
-            if (currentSelection.maxStock > 0) {
-                proceedBtn.disabled = false;
-                proceedBtn.className = "w-full mt-6 py-3 rounded-xl bg-gradient-to-r from-neon-pink to-neon-purple text-white font-orbitron font-bold text-xs cursor-pointer shadow-lg glow-pink transition";
-                proceedBtn.innerHTML = "PROCEED TO CHECKOUT <i class='fa-solid fa-arrow-right ml-1'></i>";
-            } else {
-                proceedBtn.disabled = true;
-                proceedBtn.className = "w-full mt-6 py-3 rounded-xl bg-gray-800 text-gray-500 font-orbitron font-bold text-xs cursor-not-allowed transition";
-                proceedBtn.innerHTML = "ZONE SOLD OUT";
-            }
-
-            showToast("ZONE SELECTED", `Selected ${zoneName} Zone`);
-        }
-
-        function goToForm() {
-            if (!currentSelection.zone) {
-                showToast("ERROR", "Please select a zone first!");
-                return;
-            }
-            hideAllViews();
-            document.getElementById('view-form').classList.remove('hidden');
-        }
-
-        function submitBooking(event) {
-            event.preventDefault();
-            const roblox = document.getElementById('input-roblox').value;
-            const discord = document.getElementById('input-discord').value;
-            const email = document.getElementById('input-email').value;
-            const qty = parseInt(document.getElementById('input-qty').value);
-
-            if (qty > stocks[currentSelection.zone]) {
-                showToast("STOCK ERROR", `Only ${stocks[currentSelection.zone]} tickets left in this zone!`);
-                return;
-            }
-
-            // Decrease inventory
-            stocks[currentSelection.zone] -= qty;
-
-            const booking = { zone: currentSelection.zone, roblox, discord, email, qty };
-            userBookings.push(booking);
-
-            document.getElementById('ticket-zone-tag').innerText = `ZONE: ${currentSelection.zone}`;
-            document.getElementById('res-roblox').innerText = roblox;
-            document.getElementById('res-discord').innerText = discord;
-            document.getElementById('res-email').innerText = email;
-            document.getElementById('res-qty').innerText = qty + (qty > 1 ? ' Tickets' : ' Ticket');
-
-            console.log(`[EMAIL DISPATCH] Sent ticket confirmation to ${email} for Roblox user ${roblox}.`);
-            showToast("EMAIL SENT", `E-ticket confirmation dispatched to ${email}`);
-
-            document.getElementById('modal-ticket').classList.remove('hidden');
-        }
-
-        function closeTicketModal() {
-            document.getElementById('modal-ticket').classList.add('hidden');
-            goToHome();
-        }
-
-        function openStatusModal() {
-            if (userBookings.length === 0) {
-                showToast("NOTICE", "No active tickets found.");
-                return;
-            }
-            const last = userBookings[userBookings.length - 1];
-            document.getElementById('ticket-zone-tag').innerText = `ZONE: ${last.zone}`;
-            document.getElementById('res-roblox').innerText = last.roblox;
-            document.getElementById('res-discord').innerText = last.discord;
-            document.getElementById('res-email').innerText = last.email;
-            document.getElementById('res-qty').innerText = last.qty + (last.qty > 1 ? ' Tickets' : ' Ticket');
-            document.getElementById('modal-ticket').classList.remove('hidden');
-        }
-
-        function hideAllViews() {
-            document.getElementById('view-home').classList.add('hidden');
-            document.getElementById('view-queue').classList.add('hidden');
-            document.getElementById('view-seating').classList.add('hidden');
-            document.getElementById('view-form').classList.add('hidden');
+                toast.classList.add('hidden');
+            }, 3000);
         }
     </script>
 </body>
