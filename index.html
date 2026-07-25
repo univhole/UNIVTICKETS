@@ -5,384 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNIVTICKERMAJOR - BLACKPINK [ DEBUT EVENT ] : SEOUL</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #030014;
+            background-color: #0d0d12;
             color: #ffffff;
-            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 153, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 204, 255, 0.05) 0%, transparent 20%);
         }
-        .font-orbitron {
+        .univ-text {
             font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(180deg, #ff99cc 0%, #ff0066 50%, #990033 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 5px rgba(255, 0, 102, 0.5));
+            font-weight: 900;
         }
-        .space-bg {
-            background: radial-gradient(ellipse at bottom, #1B0034 0%, #030014 100%);
-        }
-        .glass-card {
+        .glass-panel {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .glow-pink {
-            box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
+        .sold-out-badge {
+            background: linear-gradient(90deg, #333, #000);
+            color: #888;
+            border: 1px solid #444;
         }
-        .glow-pink-lg {
-            box-shadow: 0 0 50px rgba(236, 72, 153, 0.6);
+        .metallic-card {
+            border: 1px solid rgba(255, 0, 102, 0.3);
+            box-shadow: 0 0 20px rgba(255, 0, 102, 0.1);
         }
     </style>
 </head>
-<body class="space-bg min-h-screen flex flex-col justify-between selection:bg-pink-500 selection:text-white">
+<body class="min-h-screen flex flex-col">
 
-    <canvas id="spaceCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
-
-    <header class="relative z-10 border-b border-white/10 bg-black/40 backdrop-blur-md sticky top-0">
+    <header class="glass-panel border-b border-white/10 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="goToHome()">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-pink-600 to-purple-600 flex items-center justify-center glow-pink font-orbitron font-black text-xl">U</div>
-                <span class="font-orbitron font-extrabold text-xl md:text-2xl tracking-widest bg-gradient-to-r from-pink-500 via-purple-400 to-white bg-clip-text text-transparent">UNIVTICKERMAJOR</span>
+            <div class="flex items-center space-x-2">
+                <span class="univ-text text-3xl tracking-tighter italic">UNIV</span>
+                <span class="font-light text-gray-400 text-xs tracking-[0.3em] uppercase pt-2">TickerMajor</span>
             </div>
-            <div class="flex items-center space-x-6 text-sm font-medium text-gray-300">
-                <button onclick="openMyTicketsModal()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/25 border border-white/20 transition-all font-orbitron text-xs tracking-wider uppercase">My Tickets</button>
-            </div>
+            <button onclick="openMyTicketsModal()" class="text-[10px] tracking-widest uppercase text-gray-400 hover:text-white transition-colors">
+                Stored Passes
+            </button>
         </div>
     </header>
 
-    <main class="relative z-10 flex-grow max-w-7xl mx-auto px-6 py-10 w-full flex flex-col justify-center">
+    <main class="flex-grow flex items-center justify-center p-6">
+        <div class="max-w-4xl w-full">
+            <div class="glass-panel rounded-3xl overflow-hidden metallic-card flex flex-col md:flex-row shadow-2xl">
+                
+                <div class="w-full md:w-2/5 relative aspect-[3/4] bg-black flex items-center justify-center border-b md:border-b-0 md:border-r border-white/10">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                    <div class="text-center z-10 p-6">
+                        <h2 class="univ-text text-3xl italic mb-2 tracking-wider">UNIVERSE HOLE</h2>
+                        <p class="text-[10px] tracking-[0.4em] text-pink-400 uppercase">Seoul Premiere</p>
+                    </div>
+                    <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center">
+                        <div class="sold-out-badge px-6 py-2 rotate-[-10deg] font-black text-2xl tracking-tighter opacity-80 border-2">SOLD OUT</div>
+                    </div>
+                </div>
 
-        <!-- VIEW 1: HOME -->
-        <div id="viewHome" class="space-y-8">
-            <div class="text-center max-w-3xl mx-auto space-y-4">
-                <div class="inline-block px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-orbitron tracking-widest uppercase">Official Ticketing Partner</div>
-                <h1 class="font-orbitron font-black text-4xl md:text-6xl tracking-tight text-white">SELECT EVENT</h1>
-                <p class="text-gray-400 text-sm md:text-base">Experience interstellar ticketing powered by quantum-grade queue management.</p>
-            </div>
+                <div class="w-full md:w-3/5 p-8 md:p-12 flex flex-col justify-center space-y-8">
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                            <span class="text-[10px] font-bold text-red-500 tracking-widest uppercase">Tickets Unavailable</span>
+                        </div>
+                        <h1 class="font-orbitron font-bold text-3xl md:text-4xl text-white">BLACKPINK [ DEBUT EVENT ] : SEOUL</h1>
+                        <p class="text-gray-400 text-sm font-light">Seoul K-Pop Arena | Orbital Gate Admission</p>
+                    </div>
 
-            <div class="grid grid-cols-1 max-w-md mx-auto">
-                <div class="glass-card rounded-3xl p-6 glow-pink border border-pink-500/30 group">
-                    <div class="relative rounded-2xl overflow-hidden aspect-video bg-gradient-to-br from-pink-950 via-purple-950 to-black flex items-center justify-center p-6 mb-6 border border-pink-500/20">
-                        <div class="text-center relative z-10 space-y-2">
-                            <span class="text-xs font-orbitron text-pink-400 tracking-widest uppercase block">WORLD TOUR PREMIERE</span>
-                            <h2 class="font-orbitron font-black text-2xl md:text-3xl text-white tracking-wider">BLACKPINK</h2>
-                            <p class="font-orbitron text-sm text-purple-300 tracking-widest">[ DEBUT EVENT ] : SEOUL</p>
+                    <div class="grid grid-cols-2 gap-4 text-[10px] tracking-widest text-gray-500 uppercase border-t border-white/10 pt-6">
+                        <div>
+                            <span class="block text-gray-600 mb-1">Status</span>
+                            <span class="text-red-500 font-bold">Closed / Sold Out</span>
+                        </div>
+                        <div>
+                            <span class="block text-gray-600 mb-1">Gate Price</span>
+                            <span class="text-white">0 THB (Free)</span>
+                        </div>
+                        <div class="col-span-2 pt-2">
+                            <span class="block text-gray-600 mb-1">Sectors</span>
+                            <span class="text-gray-300 italic">BLINK, LOVE, BLACKPINK</span>
                         </div>
                     </div>
+
+                    <button disabled class="w-full py-5 rounded-2xl bg-white/5 border border-white/10 text-gray-600 font-orbitron font-bold text-xs tracking-[0.2em] uppercase transition-all">
+                        Tickets Sold Out
+                    </button>
                     
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-center text-sm text-gray-300">
-                            <span>DATE: LIVE IN SEOUL</span>
-                            <span class="text-pink-400 font-orbitron font-bold">FREE ADMISSION</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm text-gray-300">
-                            <span>VENUE: SEOUL K-POP ARENA</span>
-                            <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-400 font-orbitron">STATUS: OPEN</span>
-                        </div>
-
-                        <button onclick="startQueue()" class="w-full mt-4 py-4 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-orbitron font-bold tracking-widest transition-all duration-300 glow-pink flex items-center justify-center space-x-3">
-                            <span>GET TICKETS</span>
-                        </button>
-                    </div>
+                    <p class="text-center text-[10px] text-gray-600 italic">This interstellar event has reached maximum capacity.</p>
                 </div>
             </div>
         </div>
-
-        <!-- VIEW 2: QUEUE -->
-        <div id="viewQueue" class="hidden max-w-xl mx-auto w-full text-center space-y-8">
-            <div class="glass-card rounded-3xl p-10 glow-pink space-y-6 relative overflow-hidden">
-                <h2 class="font-orbitron font-black text-3xl text-white">ENTERING SECURE GATEWAY</h2>
-                <p class="text-gray-400 text-sm">Please wait while our orbital servers sync your session position (20s).</p>
-                <div class="space-y-3">
-                    <div class="flex justify-between text-xs font-orbitron text-gray-300">
-                        <span>SYSTEM SYNC PROGRESS</span>
-                        <span id="queuePercent" class="text-pink-400 font-bold">0%</span>
-                    </div>
-                    <div class="w-full bg-white/10 rounded-full h-3 overflow-hidden p-0.5 border border-white/10">
-                        <div id="queueProgressBar" class="bg-gradient-to-r from-pink-600 to-purple-500 h-full rounded-full transition-all duration-300 w-0"></div>
-                    </div>
-                </div>
-                <div class="pt-2 flex justify-between items-center text-xs text-gray-400 font-orbitron border-t border-white/10">
-                    <span>ESTIMATED TIME:</span>
-                    <span id="queueCountdown" class="text-white font-bold text-sm">20s</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- VIEW 3: SEATING -->
-        <div id="viewSeating" class="hidden max-w-5xl mx-auto w-full space-y-8">
-            <div class="flex justify-between items-center bg-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/10">
-                <div>
-                    <span class="text-xs font-orbitron text-pink-400 tracking-widest uppercase">STEP 2 OF 3</span>
-                    <h2 class="font-orbitron font-black text-2xl text-white">SELECT SEATING ZONE</h2>
-                </div>
-                <button onclick="goToHome()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-orbitron">BACK</button>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- 3 Zones in a Row -->
-                <div class="lg:col-span-2 glass-card rounded-3xl p-8 flex flex-col items-center justify-center min-h-[400px] relative border border-white/10">
-                    <div class="w-3/4 py-3 bg-pink-600/30 border border-pink-500/50 rounded-xl text-center mb-8">
-                        <span class="font-orbitron font-black text-sm tracking-widest text-white">MAIN STAGE</span>
-                    </div>
-                    <div class="grid grid-cols-3 gap-4 w-full">
-                        <div onclick="selectZone('BLINK')" id="zoneBtn-BLINK" class="cursor-pointer glass-card p-4 rounded-2xl border border-pink-500/50 hover:bg-pink-500/10 text-center flex flex-col justify-between">
-                            <div>
-                                <span class="text-[10px] font-orbitron text-pink-400 block">ZONE 1</span>
-                                <h4 class="font-orbitron font-bold text-sm text-white my-2">BLINK</h4>
-                            </div>
-                            <span class="text-[10px] font-orbitron text-pink-400 stock-display" data-zone="BLINK">10 LEFT</span>
-                        </div>
-                        <div onclick="selectZone('LOVE')" id="zoneBtn-LOVE" class="cursor-pointer glass-card p-4 rounded-2xl border border-purple-500/50 hover:bg-purple-500/10 text-center flex flex-col justify-between">
-                            <div>
-                                <span class="text-[10px] font-orbitron text-purple-400 block">ZONE 2</span>
-                                <h4 class="font-orbitron font-bold text-sm text-white my-2">LOVE</h4>
-                            </div>
-                            <span class="text-[10px] font-orbitron text-purple-400 stock-display" data-zone="LOVE">10 LEFT</span>
-                        </div>
-                        <div onclick="selectZone('BLACKPINK')" id="zoneBtn-BLACKPINK" class="cursor-pointer glass-card p-4 rounded-2xl border border-indigo-500/50 hover:bg-indigo-500/10 text-center flex flex-col justify-between">
-                            <div>
-                                <span class="text-[10px] font-orbitron text-indigo-400 block">ZONE 3</span>
-                                <h4 class="font-orbitron font-bold text-sm text-white my-2">BLACKPINK</h4>
-                            </div>
-                            <span class="text-[10px] font-orbitron text-indigo-400 stock-display" data-zone="BLACKPINK">10 LEFT</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card rounded-3xl p-6 space-y-6 border border-white/10 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <h3 class="font-orbitron font-bold text-lg text-white border-b border-white/10 pb-3">SELECTED SECTOR</h3>
-                        <div id="selectedZoneInfo" class="space-y-3">
-                            <p class="text-sm text-gray-400 italic">Please select a zone from the arena map.</p>
-                        </div>
-                    </div>
-                    <button id="proceedToCheckOutBtn" onclick="goToCheckout()" disabled class="w-full py-4 rounded-2xl bg-gray-700/50 text-gray-400 font-orbitron font-bold tracking-widest cursor-not-allowed">
-                        PROCEED TO CHECKOUT
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- VIEW 4: CHECKOUT -->
-        <div id="viewCheckout" class="hidden max-w-2xl mx-auto w-full space-y-8">
-            <div class="glass-card rounded-3xl p-8 glow-pink space-y-6 border border-pink-500/30">
-                <div class="flex justify-between items-center border-b border-white/10 pb-4">
-                    <h2 class="font-orbitron font-black text-2xl text-white">ATTENDEE CREDENTIALS</h2>
-                    <button onclick="goToSeating()" class="px-3 py-1.5 rounded-xl bg-white/10 text-xs font-orbitron">BACK</button>
-                </div>
-                <form id="checkoutForm" onsubmit="handleCheckout(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-orbitron tracking-wider text-gray-300 uppercase mb-1">ROBLOX USERNAME</label>
-                        <input type="text" id="robloxUser" required placeholder="e.g., BlinkStar_99" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-pink-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-orbitron tracking-wider text-gray-300 uppercase mb-1">DISCORD TAG</label>
-                        <input type="text" id="discordUser" required placeholder="e.g., blink#0001" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-pink-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-orbitron tracking-wider text-gray-300 uppercase mb-1">EMAIL ADDRESS</label>
-                        <input type="email" id="emailUser" required placeholder="e.g., star@interstellar.com" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-pink-500">
-                    </div>
-                    <div class="p-4 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex justify-between items-center">
-                        <span id="summaryZoneName" class="font-orbitron font-bold text-white text-sm">--</span>
-                        <span class="font-orbitron font-bold text-emerald-400 text-sm">FREE (0 THB)</span>
-                    </div>
-                    <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 text-white font-orbitron font-bold glow-pink">
-                        CONFIRM & GENERATE TICKET
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- VIEW 5: SUCCESS -->
-        <div id="viewSuccess" class="hidden max-w-xl mx-auto w-full space-y-8 text-center">
-            <h2 class="font-orbitron font-black text-3xl text-white">BOOKING SUCCESSFUL</h2>
-            <div class="glass-card rounded-3xl p-6 glow-pink-lg border border-pink-500/40 text-left space-y-4">
-                <div class="border-b border-white/10 pb-4 flex justify-between">
-                    <div>
-                        <h3 class="font-orbitron font-bold text-lg text-white">BLACKPINK [ DEBUT EVENT ]</h3>
-                        <p class="text-xs text-purple-300">SEOUL K-POP ARENA</p>
-                    </div>
-                    <span class="px-2 py-1 bg-pink-500/20 text-pink-400 text-xs font-orbitron">VERIFIED</span>
-                </div>
-                <div class="grid grid-cols-2 gap-4 text-xs">
-                    <div>ROBLOX: <span id="ticketRoblox" class="text-white font-bold">--</span></div>
-                    <div>DISCORD: <span id="ticketDiscord" class="text-white font-bold">--</span></div>
-                    <div class="col-span-2">EMAIL: <span id="ticketEmail" class="text-pink-300">--</span></div>
-                </div>
-                <div class="pt-4 border-t border-white/10 flex justify-between items-center">
-                    <div>
-                        <span class="text-[10px] text-gray-400 block uppercase">ZONE</span>
-                        <span id="ticketZone" class="font-orbitron font-bold text-pink-400 text-sm">--</span>
-                    </div>
-                    <div class="text-right">
-                        <span class="text-[10px] text-gray-400 block uppercase">PASS ID</span>
-                        <span id="ticketId" class="font-mono text-xs text-gray-300">--</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex space-x-4">
-                <button onclick="goToHome()" class="w-full py-3 rounded-2xl bg-white/10 text-white font-orbitron text-xs">HOME</button>
-                <button onclick="openMyTicketsModal()" class="w-full py-3 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 text-white font-orbitron text-xs">MY TICKETS</button>
-            </div>
-        </div>
-
     </main>
 
-    <!-- My Tickets Modal -->
-    <div id="myTicketsModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-6">
-        <div class="glass-card max-w-xl w-full rounded-3xl p-6 space-y-4 border border-pink-500/40 max-h-[80vh] overflow-y-auto">
-            <div class="flex justify-between items-center border-b border-white/10 pb-3">
-                <h3 class="font-orbitron font-bold text-lg text-white">STORED TICKETS</h3>
-                <button onclick="closeMyTicketsModal()" class="text-gray-400 font-orbitron text-xs">CLOSE</button>
-            </div>
-            <div id="myTicketsList" class="space-y-3"></div>
-        </div>
-    </div>
+    <footer class="py-10 text-center opacity-30 border-t border-white/5">
+        <span class="univ-text text-xl italic tracking-tighter">UNIV</span>
+        <p class="text-[8px] tracking-widest text-white mt-2 uppercase">Interstellar Systems &copy; 2026</p>
+    </footer>
 
-    <!-- Notification Modal -->
-    <div id="notificationModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-6">
-        <div class="glass-card max-w-md w-full rounded-3xl p-6 space-y-4 border border-pink-500/50 text-center">
-            <h4 id="notifTitle" class="font-orbitron font-bold text-lg text-white">NOTICE</h4>
-            <p id="notifMessage" class="text-sm text-gray-300"></p>
-            <button onclick="closeNotification()" class="w-full py-3 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-white font-orbitron text-xs">OKAY</button>
+    <div id="myTicketsModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl hidden flex items-center justify-center p-6">
+        <div class="glass-panel max-w-lg w-full rounded-3xl p-8 space-y-6 border border-pink-500/20">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <h3 class="font-orbitron text-white text-sm tracking-widest">STORED PASSES</h3>
+                <button onclick="closeMyTicketsModal()" class="text-pink-500 text-xs uppercase">Close</button>
+            </div>
+            <div id="myTicketsList" class="space-y-4 max-h-96 overflow-y-auto pr-2">
+                </div>
         </div>
     </div>
 
     <script>
-        const canvas = document.getElementById('spaceCanvas');
-        const ctx = canvas.getContext('2d');
-        let width, height, stars = [];
-
-        function initCanvas() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            stars = [];
-            for (let i = 0; i < 150; i++) {
-                stars.push({ x: Math.random() * width, y: Math.random() * height, radius: Math.random() * 1.5, alpha: Math.random(), speed: Math.random() * 0.2 + 0.05 });
-            }
-        }
-
-        function drawStars() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = '#ffffff';
-            stars.forEach(s => {
-                ctx.globalAlpha = s.alpha;
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-                ctx.fill();
-                s.y -= s.speed;
-                if (s.y < 0) s.y = height;
-            });
-            requestAnimationFrame(drawStars);
-        }
-
-        window.addEventListener('resize', initCanvas);
-        initCanvas();
-        drawStars();
-
-        let zoneStocks = { "BLINK": 10, "LOVE": 10, "BLACKPINK": 10 };
-        let selectedZone = null;
         let myTickets = JSON.parse(localStorage.getItem('univ_tickets') || '[]');
-
-        function updateStockUI() {
-            document.querySelectorAll('.stock-display').forEach(el => {
-                const zone = el.getAttribute('data-zone');
-                el.textContent = `${zoneStocks[zone]} LEFT`;
-                if (zoneStocks[zone] <= 0) el.textContent = 'SOLD OUT';
-            });
-        }
-
-        function showView(viewId) {
-            ['viewHome', 'viewQueue', 'viewSeating', 'viewCheckout', 'viewSuccess'].forEach(id => document.getElementById(id).classList.add('hidden'));
-            document.getElementById(viewId).classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function goToHome() { showView('viewHome'); }
-
-        function startQueue() {
-            showView('viewQueue');
-            let progress = 0, secondsLeft = 20;
-            const interval = setInterval(() => {
-                progress += 5;
-                secondsLeft = Math.max(0, Math.ceil(20 * (1 - progress / 100)));
-                document.getElementById('queuePercent').textContent = `${progress}%`;
-                document.getElementById('queueProgressBar').style.width = `${progress}%`;
-                document.getElementById('queueCountdown').textContent = `${secondsLeft}s`;
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    updateStockUI();
-                    showView('viewSeating');
-                }
-            }, 1000);
-        }
-
-        function goToSeating() { updateStockUI(); showView('viewSeating'); }
-
-        function selectZone(zoneName) {
-            if (zoneStocks[zoneName] <= 0) {
-                showModal("SOLD OUT", `${zoneName} is sold out!`);
-                return;
-            }
-            selectedZone = zoneName;
-            ['BLINK', 'LOVE', 'BLACKPINK'].forEach(z => {
-                const btn = document.getElementById(`zoneBtn-${z}`);
-                if (z === zoneName) btn.classList.add('border-pink-500', 'bg-pink-500/20');
-                else btn.classList.remove('border-pink-500', 'bg-pink-500/20');
-            });
-            document.getElementById('selectedZoneInfo').innerHTML = `<p class="text-xs font-orbitron text-pink-400">${zoneName}</p><p class="text-xs text-gray-300">Stock: ${zoneStocks[zoneName]} / 10</p>`;
-            const proceedBtn = document.getElementById('proceedToCheckOutBtn');
-            proceedBtn.disabled = false;
-            proceedBtn.className = "w-full py-4 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 text-white font-orbitron font-bold glow-pink cursor-pointer";
-        }
-
-        function goToCheckout() {
-            if (!selectedZone || zoneStocks[selectedZone] <= 0) return;
-            document.getElementById('summaryZoneName').textContent = selectedZone;
-            showView('viewCheckout');
-        }
-
-        function handleCheckout(event) {
-            event.preventDefault();
-            if (!selectedZone || zoneStocks[selectedZone] <= 0) return;
-
-            zoneStocks[selectedZone]--;
-            const passId = 'BP-SEOUL-' + Math.floor(100000 + Math.random() * 900000);
-            const ticket = {
-                id: passId,
-                zone: selectedZone,
-                roblox: document.getElementById('robloxUser').value.trim(),
-                discord: document.getElementById('discordUser').value.trim(),
-                email: document.getElementById('emailUser').value.trim()
-            };
-
-            myTickets.push(ticket);
-            localStorage.setItem('univ_tickets', JSON.stringify(myTickets));
-
-            document.getElementById('ticketRoblox').textContent = ticket.roblox;
-            document.getElementById('ticketDiscord').textContent = ticket.discord;
-            document.getElementById('ticketEmail').textContent = ticket.email;
-            document.getElementById('ticketZone').textContent = selectedZone;
-            document.getElementById('ticketId').textContent = passId;
-
-            showModal("SUCCESS", `Ticket successfully generated and dispatched to ${ticket.email}!`);
-            setTimeout(() => showView('viewSuccess'), 400);
-        }
 
         function openMyTicketsModal() {
             const list = document.getElementById('myTicketsList');
-            if (myTickets.length === 0) list.innerHTML = `<p class="text-xs text-gray-400 text-center py-4">No tickets found.</p>`;
-            else list.innerHTML = myTickets.map(t => `<div class="glass-card p-3 rounded-xl text-xs space-y-1"><div><span class="text-pink-400 font-bold">${t.zone}</span> <span class="float-right text-gray-400">${t.id}</span></div><div>Roblox: ${t.roblox} | Discord: ${t.discord}</div></div>`).join('');
+            if (myTickets.length === 0) {
+                list.innerHTML = `<p class="text-[10px] text-gray-600 text-center py-10 tracking-[0.3em] uppercase">No digital passes detected in local system.</p>`;
+            } else {
+                list.innerHTML = myTickets.map(t => `
+                    <div class="p-4 rounded-2xl border border-white/5 bg-white/5 text-[10px] space-y-1">
+                        <div class="flex justify-between font-bold text-pink-400 uppercase tracking-widest">
+                            <span>${t.zone}</span>
+                            <span class="text-gray-500">${t.id}</span>
+                        </div>
+                        <div class="text-gray-400">User: ${t.roblox} | Discord: ${t.discord}</div>
+                    </div>
+                `).join('');
+            }
             document.getElementById('myTicketsModal').classList.remove('hidden');
         }
-        function closeMyTicketsModal() { document.getElementById('myTicketsModal').classList.add('hidden'); }
-        function showModal(title, msg) {
-            document.getElementById('notifTitle').textContent = title;
-            document.getElementById('notifMessage').textContent = msg;
-            document.getElementById('notificationModal').classList.remove('hidden');
+
+        function closeMyTicketsModal() {
+            document.getElementById('myTicketsModal').classList.add('hidden');
         }
-        function closeNotification() { document.getElementById('notificationModal').classList.add('hidden'); }
     </script>
 </body>
 </html>
